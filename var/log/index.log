@@ -1,0 +1,30 @@
+ * Serving Flask app 'index'
+ * Serving Flask app 'index'
+ * Debug mode: off
+ * Debug mode: off
+ * Serving Flask app 'index'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9002
+ * Running on http://35.1.222.205:9002
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://35.1.222.205:9000
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9001
+ * Running on http://35.1.222.205:9001
+[33mPress CTRL+C to quit[0m
+[33mPress CTRL+C to quit[0m
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [08/Jan/2023 00:08:54] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:08:54] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:08:54] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:08:56] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:08:56] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:08:56] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:09:24] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:09:24] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jan/2023 00:09:24] "GET /api/v1/hits/?q=news&w=0.5 HTTP/1.1" 200 -

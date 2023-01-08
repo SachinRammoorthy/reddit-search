@@ -1,0 +1,21 @@
+ * Serving Flask app 'search'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://35.1.222.205:8000
+[33mPress CTRL+C to quit[0m
+[2023-01-08 00:09:24,595] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/sachinrammoorthy/Desktop/Projects/reddit-search/env/lib/python3.9/site-packages/flask/app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/sachinrammoorthy/Desktop/Projects/reddit-search/env/lib/python3.9/site-packages/flask/app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/sachinrammoorthy/Desktop/Projects/reddit-search/env/lib/python3.9/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/sachinrammoorthy/Desktop/Projects/reddit-search/env/lib/python3.9/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/Users/sachinrammoorthy/Desktop/Projects/reddit-search/search_server/search/views/main.py", line 50, in show_index
+    cur = connection.execute(
+sqlite3.OperationalError: no such table: Posts
+127.0.0.1 - - [08/Jan/2023 00:09:24] "[35m[1mGET /?q=news&w=0.5 HTTP/1.1[0m" 500 -

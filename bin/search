@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Stop on errors, print commands
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+set -x
+usage() {
+  echo "Usage: $0 (start|stop|restart|status)"
+}
+if [ $# -ne 1 ]; then
+  usage
+  exit 1
+fi
+
+# Parse argument.  $1 is the first argument
+case $1 in
+  "start")
+    FILE=var/search.sqlite3
+    if ! test -f "$FILE"; then
+    echo "Error: can't find search database var/search.sqlite3"
+    echo "Try: ./bin/searchdb create"
+    exit 1
+    fi
+
+    if ! (./bin/index status | grep -q 'running'); then
+    echo "Error: index server is not running"
+    echo "Try ./bin/index start"
+    exit 1
+    fi
+    
+    set +o pipefail
+    NPROCS=$(pgrep -f "flask --app search run --host 0.0.0.0 --port 8000" | wc -l)
+    set -o pipefail
+    if [ "$NPROCS" -eq 1 ]; then
+    echo "Error: search server is already running"
+    exit 1
+    fi
+
+    mkdir -p var/log
+    rm -f var/log/search.log
+    flask --app search run --host 0.0.0.0 --port 8000 &> var/log/search.log &
+    ;;
+  "stop")
+    pkill -f 'flask --app search run --host 0.0.0.0 --port 8000' || true
+    ;;
+  "restart")
+    pkill -f 'flask --app search run --host 0.0.0.0 --port 8000' || true
+    mkdir -p var/log
+    rm -f var/log/search.log
+    flask --app index run --host 0.0.0.0 --port 8000 &> var/log/search.log &
+    ;;
+  "status")
+    set +o pipefail
+    NPROCS=$(pgrep -f "flask --app search run --host 0.0.0.0 --port 8000" | wc -l)
+    set -o pipefail
+    if [ "$NPROCS" -eq 1 ]; then
+    echo "search server running"
+    exit 0
+    else
+    echo "search server stopped"
+    exit 1
+    fi
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
+esac
+
+exit
