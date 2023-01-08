@@ -15,7 +15,7 @@ def main():
     weight_per_doc = {}
 
     for _, group in itertools.groupby(sys.stdin, keyfunc):
-        for _, group2 in itertools.groupby(list(group), keyfunc2):
+        for _, group2 in itertools.groupby(list(group), keyfunc_middle):
             all_lines = []
             for line in group2:
                 values = line.strip().split()
@@ -44,8 +44,7 @@ def keyfunc(line):
     return line.split("\t")[0]
 
 
-def keyfunc2(line):
-    """Return info."""
+def keyfunc_middle(line):
     return line.split("\t")[1].split()[0]
 
 
